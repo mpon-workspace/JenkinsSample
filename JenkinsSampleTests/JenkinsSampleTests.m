@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "Calculator.h"
 
 @interface JenkinsSampleTests : XCTestCase
 
@@ -26,9 +27,19 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testSum
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    Calculator *calculator = [[Calculator alloc] init];
+    
+    NSArray *numbers = @[
+                         [NSDecimalNumber decimalNumberWithString:@"5"],
+                         [NSDecimalNumber decimalNumberWithString:@"8"],
+                         [NSDecimalNumber decimalNumberWithString:@"12"]
+                         ];
+    NSDecimalNumber *sum = [calculator sum:numbers];
+    NSDecimalNumber *expect = [NSDecimalNumber decimalNumberWithString:@"25"];
+
+    XCTAssertEqualObjects(sum, expect, @"整数の足し算が間違っている");
 }
 
 @end
