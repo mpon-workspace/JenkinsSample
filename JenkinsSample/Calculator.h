@@ -11,5 +11,6 @@
 @interface Calculator : NSObject
 
 - (NSDecimalNumber *)sum:(NSArray *)numbers;
+- (NSDecimalNumber *)mul:(NSArray *)numbers;
 
 @end

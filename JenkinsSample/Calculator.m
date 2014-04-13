@@ -21,4 +21,15 @@
     return num;
 }
 
+- (NSDecimalNumber *)mul:(NSArray *)numbers
+{
+    __block NSDecimalNumber *num = [NSDecimalNumber one];
+    
+    for (NSDecimalNumber *n in numbers) {
+        num = [num decimalNumberByMultiplyingBy:n];
+    }
+    
+    return num;
+}
+
 @end

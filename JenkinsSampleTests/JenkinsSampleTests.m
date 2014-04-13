@@ -11,6 +11,8 @@
 
 @interface JenkinsSampleTests : XCTestCase
 
+@property (nonatomic) Calculator *calculator;
+
 @end
 
 @implementation JenkinsSampleTests
@@ -19,6 +21,7 @@
 {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.calculator = [[Calculator alloc] init];
 }
 
 - (void)tearDown
@@ -29,17 +32,30 @@
 
 - (void)testSum
 {
-    Calculator *calculator = [[Calculator alloc] init];
-    
+    // 5+8+12=25
     NSArray *numbers = @[
                          [NSDecimalNumber decimalNumberWithString:@"5"],
                          [NSDecimalNumber decimalNumberWithString:@"8"],
                          [NSDecimalNumber decimalNumberWithString:@"12"]
                          ];
-    NSDecimalNumber *sum = [calculator sum:numbers];
+    NSDecimalNumber *sum = [self.calculator sum:numbers];
     NSDecimalNumber *expect = [NSDecimalNumber decimalNumberWithString:@"25"];
 
     XCTAssertEqualObjects(sum, expect, @"整数の足し算が間違っている");
+}
+
+- (void)testMul
+{
+    // 5*8*12=480
+    NSArray *numbers = @[
+                         [NSDecimalNumber decimalNumberWithString:@"5"],
+                         [NSDecimalNumber decimalNumberWithString:@"8"],
+                         [NSDecimalNumber decimalNumberWithString:@"12"]
+                         ];
+    NSDecimalNumber *sum = [self.calculator mul:numbers];
+    NSDecimalNumber *expect = [NSDecimalNumber decimalNumberWithString:@"480"];
+    
+    XCTAssertEqualObjects(sum, expect, @"整数のかけ算が間違っている");
 }
 
 @end
