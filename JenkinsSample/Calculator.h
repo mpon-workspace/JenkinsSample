@@ -10,6 +10,8 @@
 
 @interface Calculator : NSObject
 
++ (NSArray *)keycodes;
+
 - (NSDecimalNumber *)sum:(NSArray *)numbers;
 - (NSDecimalNumber *)mul:(NSArray *)numbers;
 

@@ -58,4 +58,11 @@
     XCTAssertEqualObjects(sum, expect, @"整数のかけ算が間違っている");
 }
 
+- (void)testClassConstant
+{
+    NSArray *keycodes = Calculator.keycodes;
+    NSArray *expect   = @[ @"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9" ];
+    XCTAssertEqualObjects(keycodes, expect, @"クラス定数が取得できない");
+}
+
 @end
